@@ -27,15 +27,20 @@ Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`
     </button>
 
     <script>
-      let score = JSON.parse(localStorage.getItem("score"));
+      let score = JSON.parse(localStorage.getItem("score")) || {
+        wins: 0,
+        losses: 0,
+        ties: 0,
+      };
 
-      if (!score) {
-        score = {
-          wins: 0,
-          losses: 0,
-          ties: 0,
-        };
-      }
+      // if (!score) {
+      //   score = {
+      //     wins: 0,
+      //     losses: 0,
+      //     ties: 0,
+      //   };
+      // }
+
       function pickComputerMove() {
         const randomNumber = Math.random();
         let computerMove = "";

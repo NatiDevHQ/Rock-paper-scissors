@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shipping</title>
+
+    <style>
+      body {
+        font-family: arial;
+      }
+      .subscribe-button {
+        border: none;
+        background-color: black;
+        color: #fff;
+        padding: 10px 15px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+      }
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+      .cost-input {
+        font-size: 15px;
+        padding: 10px;
+      }
+      .calculator-button {
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        padding: 12px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button class="js-subscribe-button subscribe-button" onclick="subscribe()">
+      Subscribe
+    </button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders Under $40 = +$10 shipping</p>
+    <p>Orders Over $40 = FREE shipping</p>
+
+    <input
+      type="text"
+      class="input cost-input"
+      placeholder="cost of order"
+      onkeydown="handleCostKeyDown(event)
+      
+      
+      "
+    />
+    <button
+      class="calculator calculator-button"
+      onclick="
+      totalCalculate()
+      "
+    >
+      Calculate
+    </button>
+    <p class="order"></p>
+
+    <script>
+      function handleCostKeyDown(event) {
+        if (event.key === "Enter") {
+          totalCalculate();
+        }
+      }
+
+      function totalCalculate() {
+        const resultInput = parseFloat(document.querySelector(".input").value);
+        if (resultInput >= 40) {
+          document.querySelector(
+            ".order"
+          ).textContent = `Free shipping $${resultInput}`;
+        } else {
+          document.querySelector(".order").textContent = `Shipping $${
+            resultInput + 10
+          }`;
+        }
+      }
+
+      function subscribe() {
+        const buttonElement = document.querySelector(".js-subscribe-button");
+        if (buttonElement.textContent === "Subscribe") {
+          buttonElement.textContent = "Subscribed";
+          buttonElement.classList.add("is-subscribed");
+        } else {
+          buttonElement.textContent = "Subscribe";
+          buttonElement.classList.remove("is-subscribed");
+        }
+      }
+    </script>
+  </body>
+</html>
