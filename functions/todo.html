@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List with Grid</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .todo-container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        display: grid;
+        gap: 20px;
+      }
+
+      h1 {
+        margin: 0;
+        text-align: center;
+        color: #333;
+      }
+
+      .input-grid {
+        display: grid;
+        grid-template-columns: 2fr 1.5fr auto;
+        gap: 10px;
+      }
+
+      input[type="text"],
+      input[type="date"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      button.add {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        padding: 10px 16px;
+        cursor: pointer;
+      }
+
+      button.add:hover {
+        background-color: #0056b3;
+      }
+
+      .todo-item {
+        display: grid;
+        grid-template-columns: 2fr 1.5fr auto;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+
+      .todo-item button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .todo-item button:hover {
+        background-color: #b02a37;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="todo-container">
+      <h1>Todo List</h1>
+      <div class="input-grid">
+        <input type="text" class="input" placeholder="Todo name" />
+        <input type="date" class="date" />
+        <button class="add" onclick="Adding()">Add</button>
+      </div>
+      <div class="js-todo-list"></div>
+    </div>
+
+    <script>
+      let todoList = [];
+
+      function Adding() {
+        const inputElement = document.querySelector(".input");
+        const inputValue = inputElement.value;
+
+        const dateInputElement = document.querySelector(".date");
+        const dateValue = dateInputElement.value;
+
+        if (inputValue !== "") {
+          todoList.push({
+            name: inputValue,
+            dueDate: dateValue,
+          });
+
+          inputElement.value = "";
+          dateInputElement.value = "";
+          renderTodoList();
+        }
+      }
+
+      function renderTodoList() {
+        let todoListHtml = "";
+
+        for (let i = 0; i < todoList.length; i++) {
+          const { name, dueDate } = todoList[i];
+
+          const html = `
+            <div class="todo-item">
+              <div>${name}</div>
+              <div>${dueDate}</div>
+              <button onclick="
+                todoList.splice(${i}, 1);
+                renderTodoList();
+              ">Delete</button>
+            </div>
+          `;
+          todoListHtml += html;
+        }
+
+        document.querySelector(".js-todo-list").innerHTML = todoListHtml;
+      }
+    </script>
+  </body>
+</html>
