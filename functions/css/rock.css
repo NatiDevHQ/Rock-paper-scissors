@@ -1,0 +1,45 @@
+body {
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+}
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.move-icon {
+  height: 50px;
+}
+.move-button {
+  background-color: transparent;
+  border: 3px solid white;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.js-result,
+.js-moves,
+.js-score {
+  margin: 10px 0;
+  font-size: 18px;
+}
+button.reset-button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.reset-button:hover {
+  opacity: 0.8;
+}
+.result {
+  font-size: 25px;
+  font-weight: bold;
+}

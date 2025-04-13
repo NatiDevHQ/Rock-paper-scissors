@@ -89,7 +89,7 @@
       <div class="input-grid">
         <input type="text" class="input" placeholder="Todo name" />
         <input type="date" class="date" />
-        <button class="add" onclick="Adding()">Add</button>
+        <button class="add js-add">Add</button>
       </div>
       <div class="js-todo-list"></div>
     </div>
@@ -119,24 +119,40 @@
       function renderTodoList() {
         let todoListHtml = "";
 
-        for (let i = 0; i < todoList.length; i++) {
-          const { name, dueDate } = todoList[i];
+        todoList.forEach((todoObject, index) => {
+          const { name, dueDate } = todoObject;
 
           const html = `
             <div class="todo-item">
               <div>${name}</div>
               <div>${dueDate}</div>
-              <button onclick="
-                todoList.splice(${i}, 1);
-                renderTodoList();
-              ">Delete</button>
+              <button class="js-delete">Delete</button>
             </div>
           `;
           todoListHtml += html;
-        }
+        });
 
         document.querySelector(".js-todo-list").innerHTML = todoListHtml;
+
+        document
+          .querySelectorAll(".js-delete")
+          .forEach((deleteButton, index) => {
+            deleteButton.addEventListener("click", () => {
+              todoList.splice(index, 1);
+              renderTodoList();
+            });
+          });
       }
+
+      document.body.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          Adding();
+        } else {
+          document.querySelector(".js-add").addEventListener("click", () => {
+            Adding();
+          });
+        }
+      });
     </script>
   </body>
 </html>
