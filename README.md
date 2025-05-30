@@ -37,6 +37,4 @@ Sure! Here's a simplified and clarified version of the README from SuperSimpleDe
 * Write JavaScript that is clear and functional — focus on small steps like handling button clicks, updating the DOM, storing data, etc.
 * Test that your features work and the user experience is smooth.
 
----
 
-If you’d like, I can help you step-by-step with the code for either or both projects. Just let me know!
