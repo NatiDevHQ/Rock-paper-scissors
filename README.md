@@ -1,6 +1,4 @@
-Sure! Here's a simplified and clarified version of the README from SuperSimpleDev, broken down so you can understand exactly what you need to build and match the expectations:
 
----
 
 ## 📝 Todo List App
 
