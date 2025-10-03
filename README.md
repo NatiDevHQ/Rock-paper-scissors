@@ -1,4 +1,4 @@
-in development 
+in development status 
 
 ## 📝 Todo List App
 
